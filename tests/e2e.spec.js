@@ -10,12 +10,12 @@ async function login(page, username, password) {
     await loginPage.open();
     await loginPage.login(username, password);
 }
-test('User successfully logs in', async ({page}) => {
+test('User successfully logs in @ui', async ({page}) => {
     await login(page, 'standard_user', 'secret_sauce');
     await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
 });
 
-test('User successfully adds an item to cart', async ({page}) => {
+test('User successfully adds an item to cart @ai', async ({page}) => {
     const inventoryPage = new InventoryPage(page);
 
     await login(page, 'standard_user', 'secret_sauce');
@@ -24,7 +24,7 @@ test('User successfully adds an item to cart', async ({page}) => {
     await expect(page.locator('.inventory_item_name')).toHaveText('Sauce Labs Fleece Jacket');
 });
 
-test('User successfully goes to checkout', async ({page}) => {
+test('User successfully goes to checkout @ui', async ({page}) => {
     const inventoryPage = new InventoryPage(page);
     const cartPage = new CartPage(page);
 
@@ -35,7 +35,7 @@ test('User successfully goes to checkout', async ({page}) => {
     await expect(page.locator('.title')).toHaveText('Checkout: Your Information');
 });
 
-test('User successfully fills out checkout form', async ({page}) => {
+test('User successfully fills out checkout form @ui', async ({page}) => {
     const inventoryPage = new InventoryPage(page);
     const cartPage = new CartPage(page);
     const checkoutStepOnePage = new CheckoutStepOnePage(page);
@@ -49,7 +49,7 @@ test('User successfully fills out checkout form', async ({page}) => {
     await expect(page).toHaveURL('https://www.saucedemo.com/checkout-step-two.html');
 });
 
-test('User successfully finishes checkout', async ({page}) => {
+test('User successfully finishes checkout @ui', async ({page}) => {
     const inventoryPage = new InventoryPage(page);
     const cartPage = new CartPage(page);
     const checkoutStepOnePage = new CheckoutStepOnePage(page);

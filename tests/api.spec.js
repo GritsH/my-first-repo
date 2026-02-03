@@ -40,7 +40,7 @@ test.describe.serial('API tests for Restful-booker', () => {
         expect(authToken).toBeTruthy();
     });
 
-    test('Get booking', async ({ request }) => {
+    test('Get booking @api', async ({ request }) => {
         const response = await request.get(`${baseUrl}/booking/${bookingId}`);
         expect(response.status()).toBe(200);
 
@@ -49,7 +49,7 @@ test.describe.serial('API tests for Restful-booker', () => {
         expect(body.lastname).toBe('Doe');
     });
 
-    test('Update booking', async ({ request }) => {
+    test('Update booking @api', async ({ request }) => {
         const response = await request.put(`${baseUrl}/booking/${bookingId}`, {
             headers: {
                 Cookie: `token=${authToken}`
@@ -74,7 +74,7 @@ test.describe.serial('API tests for Restful-booker', () => {
         expect(body.bookingdates.checkin).toBe('2026-03-01');
     });
 
-    test('Delete booking', async ({ request }) => {
+    test('Delete booking @api', async ({ request }) => {
         const response = await request.delete(`${baseUrl}/booking/${bookingId}`, {
             headers: {
                 Cookie: `token=${authToken}`
