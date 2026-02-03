@@ -16,9 +16,9 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run UI tests
-        run: npm run tests:ui -- --reporter=html --output=playwright-report-ui
+        run: npm run tests:ui -- --reporter=html,outputFolder=playwright-report-ui
       - name: Run API tests
-        run: npm run tests:api -- --reporter=html --output=playwright-report-api
+        run: npm run tests:api -- --reporter=html,outputFolder=playwright-report-api
       - name: Upload UI test report
         if: always()
         uses: actions/upload-artifact@v4
